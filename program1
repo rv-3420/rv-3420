@@ -1,0 +1,41 @@
+import matplotlib.pyplot as plt
+def draw_line(x1, y1, x2, y2):
+    dx= abs(x2-x1) 
+    dy= abs(y2-yl) 
+    steep = dy > dx 
+    if steep: 
+        x1, y1 = y1,x1 
+        x2, y2 = y2,x2 
+        dx, dy = dy, dx
+    if x1>x2:
+        x1,x2 = x2,x1
+        y1,y2 = y2,y1
+
+    p = 2*dy-dx
+    y = y1
+    points = []
+    for x in range(x1,x2 + 1):
+        points.append((x,y))
+        if p<0:
+            p = p + 2 * dy
+        else:
+            y = Y + 1
+            p = p+2*dy-2*dx
+    return points
+
+def main():
+    x1,y1 = map(int, input("enter the first point").split())
+    x2,y2 = map(int, input("enter the second point").split())
+    points = draw_line(x1,y1,x2,y2)
+    x_value = [point[0] for point in points]
+    y_value = [point[1] for point in points]
+    plt.plot(x_value,y_value,marker='o')
+    plt.xlabel('X-axis')
+    plt.ylabel('Y-axis')
+    plt.title('draw line')
+    plt.grid()
+    plt.show()
+
+if __name__ =="__main__":
+    main()
+        
